@@ -8,6 +8,7 @@ function AddProduct() {
     category: "",
     price: "",
     carbonImpact: "",
+    rating: "",
     imageUrl: ""
   });
 
@@ -18,16 +19,19 @@ function AddProduct() {
       ...form,
       price: Number(form.price),
       carbonImpact: Number(form.carbonImpact),
+      rating: Number(form.rating),
       ecoCertified: false
     });
 
     alert("✅ Product added successfully");
+
     setForm({
       name: "",
       description: "",
       category: "",
       price: "",
       carbonImpact: "",
+      rating: "",
       imageUrl: ""
     });
   };
@@ -68,13 +72,23 @@ function AddProduct() {
 
         <input
           type="number"
-          placeholder="Carbon Impact (CO₂)"
+          placeholder="Carbon Impact (kg CO₂)"
           required
           value={form.carbonImpact}
           onChange={(e) => setForm({ ...form, carbonImpact: e.target.value })}
         />
 
-     
+        {/* ✅ ADDED */}
+        <input
+          type="number"
+          min="1"
+          max="5"
+          step="0.5"
+          placeholder="Rating (1 - 5)"
+          value={form.rating}
+          onChange={(e) => setForm({ ...form, rating: e.target.value })}
+        />
+
         <input
           placeholder="Image URL (https://...)"
           required

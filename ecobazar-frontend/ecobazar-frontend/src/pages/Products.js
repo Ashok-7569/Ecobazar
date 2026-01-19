@@ -38,7 +38,6 @@ function Products() {
     loadProducts();
   };
 
- 
   const applyFilter = async () => {
     let url = "/products";
 
@@ -62,14 +61,12 @@ function Products() {
       {/* Filter bar */}
       <div className="filter-bar">
 
-        {/* Search By name*/}
         <input
           placeholder="Search by name"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Category</option>
           <option value="Toys">Toys</option>
@@ -78,7 +75,7 @@ function Products() {
         </select>
 
         <select value={eco} onChange={(e) => setEco(e.target.value)}>
-          <option value="">Eco</option>
+          <option value="">Eco Rating</option>
           <option value="GREEN">GREEN</option>
           <option value="YELLOW">YELLOW</option>
           <option value="RED">RED</option>
@@ -95,9 +92,24 @@ function Products() {
 
         <button onClick={applyFilter}>Apply</button>
         <button onClick={loadProducts}>Reset</button>
+
+        {/* ✅ ADDED QUICK FILTERS */}
+        <button onClick={async () => {
+          const res = await API.get("/products/eco/friendly");
+          setProducts(res.data);
+        }}>
+          Eco Friendly 🌱
+        </button>
+
+        <button onClick={async () => {
+          const res = await API.get("/products/eco/not-friendly");
+          setProducts(res.data);
+        }}>
+          Not Eco ❌
+        </button>
       </div>
 
-      {/* Products*/}
+      {/* Products */}
       <div className="products-grid">
         {products.map((p) => (
           <div key={p.id} className="product-card">

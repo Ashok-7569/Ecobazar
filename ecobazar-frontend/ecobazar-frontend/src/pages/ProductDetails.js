@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../api/api";
+import StarRating from "../components/StarRating";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -27,10 +28,27 @@ function ProductDetails() {
 
         <div className="product-info">
           <h3>{product.name}</h3>
-          <p>{product.category}</p>
-          <p>₹{product.price}</p>
+          <p><b>Category:</b> {product.category}</p>
+          <p><b>Price:</b> ₹{product.price}</p>
 
-          {/*  User only */}
+          {/* ✅ ADDED PART */}
+          <p><b>Description:</b> {product.description}</p>
+
+          <p>
+            <b>Carbon Emission:</b>{" "}
+            {product.carbonImpact} kg CO₂ / item
+          </p>
+
+          <p>
+            <b>Eco Rating:</b> {product.ecoRating}
+          </p>
+
+          <p>
+            <b>User Rating:</b>
+            <StarRating value={product.rating || 3} />
+          </p>
+
+          {/* User only */}
           {role === "USER" && (
             <button onClick={addToCart}>Add to Cart</button>
           )}

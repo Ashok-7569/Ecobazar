@@ -113,4 +113,13 @@ public class ProductService {
     public List<Product> sortByCarbonImpact() {
         return repo.findAllByStatusOrderByCarbonImpactAsc(ProductStatus.APPROVED);
     }
+    
+    public List<Product> ecoFriendly() {
+        return repo.findByEcoRatingAndStatus("GREEN", ProductStatus.APPROVED);
+    }
+
+    public List<Product> notEcoFriendly() {
+        return repo.findByEcoRatingAndStatus("RED", ProductStatus.APPROVED);
+    }
+
 }

@@ -25,7 +25,20 @@ public class Product {
     private String ecoRating;
     private String imageUrl;
 
+    private double rating; // 1.0 to 5.0
+    
     // getters & setters
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+
+   
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

@@ -87,4 +87,15 @@ public class ProductController {
     public List<Product> sortCarbon() {
         return service.sortByCarbonImpact();
     }
+    
+    @GetMapping("/eco/friendly")
+    public List<Product> ecoFriendly() {
+        return service.ecoFriendly();
+    }
+
+    @GetMapping("/eco/not-friendly")
+    public List<Product> notEcoFriendly() {
+        return service.notEcoFriendly();
+    }
+
 }
