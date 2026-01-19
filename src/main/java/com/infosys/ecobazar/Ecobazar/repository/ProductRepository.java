@@ -11,18 +11,18 @@ import com.infosys.ecobazar.Ecobazar.entity.ProductStatus;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    // ---------------- USER VIEW ----------------
+    // User view
 
     List<Product> findByStatus(ProductStatus status);
 
-    // ---------------- SEARCH ----------------
+    //Search
 
     List<Product> findByNameContainingIgnoreCaseAndStatus(
             String name,
             ProductStatus status
     );
 
-    // ---------------- FILTERS ----------------
+    // Filters
 
     List<Product> findByCategoryIgnoreCaseAndStatus(
             String category,
@@ -40,14 +40,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             ProductStatus status
     );
 
-    // ---------------- SORT ----------------
+    // Sort
 
     List<Product> findAllByStatusOrderByPriceAsc(ProductStatus status);
 
     List<Product> findAllByStatusOrderByCarbonImpactAsc(ProductStatus status);
 
-    // ---------------- ⭐ FIXED METHOD ⭐ ----------------
-    // KEEPING SAME NAME: findByEcoRatingAndStatus1
+  
+   
 
     @Query("""
            SELECT p FROM Product p
@@ -59,7 +59,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             @Param("status") ProductStatus status
     );
 
-    // ---------------- RATING FILTER ----------------
+    // Rating 
 
     List<Product> findByRatingGreaterThanEqualAndStatus(
             double rating,

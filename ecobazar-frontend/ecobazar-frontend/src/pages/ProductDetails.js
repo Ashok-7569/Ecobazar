@@ -31,7 +31,7 @@ function ProductDetails() {
           <p><b>Category:</b> {product.category}</p>
           <p><b>Price:</b> ₹{product.price}</p>
 
-          {/* ✅ ADDED PART */}
+          {/*ADDED PART */}
           <p><b>Description:</b> {product.description}</p>
 
           <p>

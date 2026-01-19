@@ -48,7 +48,7 @@ public class AuthController {
         return userService.register(user);
     }
 
-    //  LOGIN
+    //  Login
     @PostMapping("/login")
     public AuthResponse login(@RequestBody LoginRequest request) {
 

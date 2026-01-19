@@ -78,7 +78,7 @@ function AddProduct() {
           onChange={(e) => setForm({ ...form, carbonImpact: e.target.value })}
         />
 
-        {/* ✅ ADDED */}
+        {/*  ADDED */}
         <input
           type="number"
           min="1"

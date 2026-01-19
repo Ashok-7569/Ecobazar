@@ -93,7 +93,7 @@ function Products() {
         <button onClick={applyFilter}>Apply</button>
         <button onClick={loadProducts}>Reset</button>
 
-        {/* ✅ ADDED QUICK FILTERS */}
+        {/* ADDED QUICK FILTERS */}
         <button onClick={async () => {
           const res = await API.get("/products/eco/friendly");
           setProducts(res.data);

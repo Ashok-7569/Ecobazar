@@ -20,7 +20,6 @@ public class ProductService {
 
   
     // Eco Rating
-    // =========================
     private String calculateEcoRating(double carbon) {
         if (carbon <= 20) return "GREEN";
         if (carbon <= 50) return "YELLOW";
