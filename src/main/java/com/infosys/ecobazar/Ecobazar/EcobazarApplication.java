@@ -1,0 +1,13 @@
+package com.infosys.ecobazar.Ecobazar;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EcobazarApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EcobazarApplication.class, args);
+        System.out.println("Infosys ECobazar");
+    }
+}
