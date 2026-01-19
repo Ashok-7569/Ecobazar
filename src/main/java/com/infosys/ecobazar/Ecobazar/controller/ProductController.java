@@ -19,9 +19,9 @@ public class ProductController {
         this.service = service;
     }
 
-    // =========================
-    // CRUD
-    // =========================
+    
+    // Crud
+    
     @PostMapping
     public ResponseEntity<Product> add(@RequestBody Product product) {
         return ResponseEntity.ok(service.addProduct(product));
@@ -53,9 +53,9 @@ public class ProductController {
         return ResponseEntity.ok("Deleted");
     }
 
-    // =========================
-    // 🔍 SEARCH & FILTER
-    // =========================
+    
+    // Search and filter
+  
     @GetMapping("/search")
     public List<Product> search(@RequestParam String name) {
         return service.searchByName(name);

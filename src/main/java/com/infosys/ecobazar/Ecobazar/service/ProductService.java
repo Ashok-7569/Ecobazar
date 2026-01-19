@@ -18,8 +18,8 @@ public class ProductService {
         this.repo = repo;
     }
 
-    // =========================
-    // 🌱 ECO RATING
+  
+    // Eco Rating
     // =========================
     private String calculateEcoRating(double carbon) {
         if (carbon <= 20) return "GREEN";
@@ -27,27 +27,21 @@ public class ProductService {
         return "RED";
     }
 
-    // =========================
-    // ADD PRODUCT → PENDING
-    // =========================
+    
     public Product addProduct(Product product) {
         product.setEcoRating(calculateEcoRating(product.getCarbonImpact()));
         product.setStatus(ProductStatus.PENDING);
         return repo.save(product);
     }
 
-    // =========================
-    // UPDATE PRODUCT → PENDING
-    // =========================
+    
     public Product updateProduct(Product product) {
         product.setEcoRating(calculateEcoRating(product.getCarbonImpact()));
         product.setStatus(ProductStatus.PENDING);
         return repo.save(product);
     }
 
-    // =========================
-    // GET ALL PRODUCTS
-    // =========================
+   //Get all Products
     public List<Product> getAllProducts() {
 
         String role = SecurityContextHolder.getContext()
@@ -64,33 +58,25 @@ public class ProductService {
         return repo.findAll();
     }
 
-    // =========================
-    // GET BY ID
-    // =========================
+    //Get By Id
     public Product getProductById(int id) {
         return repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
-    // =========================
-    // ADMIN APPROVAL
-    // =========================
+    //Admin Approval
     public Product approveProduct(int id) {
         Product product = getProductById(id);
         product.setStatus(ProductStatus.APPROVED);
         return repo.save(product);
     }
 
-    // =========================
-    // DELETE PRODUCT
-    // =========================
+   //Delete Product
     public void deleteProduct(int id) {
         repo.deleteById(id);
     }
 
-    // =========================
-    // 🔍 SEARCH & FILTER (APPROVED ONLY)
-    // =========================
+   
     public List<Product> searchByName(String name) {
         return repo.findByNameContainingIgnoreCaseAndStatus(
                 name,

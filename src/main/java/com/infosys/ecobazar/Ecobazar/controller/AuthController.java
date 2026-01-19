@@ -27,7 +27,7 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // ✅ REGISTER
+   
     @PostMapping("/register")
     public User register(@RequestBody User user) {
 
@@ -48,7 +48,7 @@ public class AuthController {
         return userService.register(user);
     }
 
-    // ✅ LOGIN
+    //  LOGIN
     @PostMapping("/login")
     public AuthResponse login(@RequestBody LoginRequest request) {
 

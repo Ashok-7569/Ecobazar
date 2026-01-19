@@ -28,14 +28,14 @@ public class CartService {
                 .getName();
     }
 
-    // 🛒 ADD TO CART (ONLY APPROVED PRODUCTS)
+    // Add to cart
     public void add(int productId) {
         String username = currentUser();
 
         Product product = productRepo.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
-        // ✅ ONLY CHECK STATUS (NO ADMIN APPROVAL HERE)
+
         if (product.getStatus() != ProductStatus.APPROVED) {
             throw new RuntimeException("Product pending admin approval");
         }

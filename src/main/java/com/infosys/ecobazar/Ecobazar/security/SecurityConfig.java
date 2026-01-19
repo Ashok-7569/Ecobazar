@@ -32,21 +32,21 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
 
-                // AUTH
+                // Auth
                 .requestMatchers("/auth/**").permitAll()
 
-                // PUBLIC PRODUCT VIEW & SEARCH
+                // product view and search
                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
 
-                // PRODUCT MANAGEMENT
+                //Product Management
                 .requestMatchers(HttpMethod.POST, "/products/**").hasAnyRole("ADMIN", "SELLER")
                 .requestMatchers(HttpMethod.PUT, "/products/**").hasAnyRole("ADMIN", "SELLER")
                 .requestMatchers(HttpMethod.DELETE, "/products/**").hasAnyRole("ADMIN", "SELLER")
 
-                // CART
+                // Cart
                 .requestMatchers("/cart/**").hasRole("USER")
 
-                // ADMIN
+                // Admin
                 .requestMatchers("/admin/**").hasRole("ADMIN")
 
                 .anyRequest().authenticated()

@@ -9,22 +9,22 @@ import com.infosys.ecobazar.Ecobazar.entity.ProductStatus;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    // =========================
-    // USER VIEW (APPROVED ONLY)
-    // =========================
+   
+    // User view
+   
     List<Product> findByStatus(ProductStatus status);
 
-    // =========================
-    // 🔍 SEARCH BY NAME
-    // =========================
+   
+    // search By name
+   
     List<Product> findByNameContainingIgnoreCaseAndStatus(
             String name,
             ProductStatus status
     );
 
-    // =========================
-    // 🔍 FILTERS (APPROVED ONLY)
-    // =========================
+  
+    // Filters
+  
     List<Product> findByCategoryIgnoreCaseAndStatus(
             String category,
             ProductStatus status
@@ -41,9 +41,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             ProductStatus status
     );
 
-    // =========================
-    // 🔽 SORT (APPROVED ONLY)
-    // =========================
+ 
+    // sort
+    
     List<Product> findAllByStatusOrderByPriceAsc(ProductStatus status);
 
     List<Product> findAllByStatusOrderByCarbonImpactAsc(ProductStatus status);
